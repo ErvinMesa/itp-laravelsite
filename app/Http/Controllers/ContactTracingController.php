@@ -8,13 +8,17 @@ use Illuminate\Support\Facades\DB;
 use \App\CityMun;
 class ContactTracingController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function create()
     {
         return view('content_pages.contact_tracing.create');
     }
     public function index()
     {
-        $citymuns = \App\CityMun::select()->get();
+        $citymuns = CityMun::select()->get();
         return view('content_pages.contact_tracing.index', 
             ['citymuns'=>$citymuns]
         );
@@ -27,7 +31,6 @@ class ContactTracingController extends Controller
             'cmclass' => 'required',
             'remarks' => 'nullable'
         ]);
-
         CityMun::create($data);
         return redirect('/ctracing/index');
     }

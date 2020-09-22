@@ -1,36 +1,43 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+    .table tbody+tbody{
+        border-top: none;
+    }
+
+</style>
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Cities and Municipalities</h4>
-                    <a href="/ctracing" class="btn btn-primary mb-2">Add</a>
+                    <h4 class="card-title">Barangay</h4>
+                    <a href="/barangay" class="btn btn-primary mb-2">Add</a>
                     <div class="table-responsive">
                         <table id="ctracing" class="table table-striped table-bordered">
                             <thead>
                                 <tr>
-                                    <th>Description</th>
+                                    <th>Name</th>
+                                    <th>Location</th>
                                     <th>Latitude</th>
                                     <th>Longitude</th>
-                                    <th>Class</th>
+                                    <th>Est. Population</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach($citymuns as $citymun): ?>
+                                <?php foreach($barangays as $barangay): ?>
                                     <tr>
-                                        <td>{{$citymun->cmdesc}}</td>
-                                        <td>{{$citymun->latitude}}</td>
-                                        <td>{{$citymun->longitude}}</td>
-                                        <td>{{$citymun->cmclass}}</td>
+                                        <td>{{$barangay->bname}}</td>
+                                        <td>{{$barangay->citymun->cmdesc}}</td>
+                                        <td>{{$barangay->latitude}}</td>
+                                        <td>{{$barangay->longitude}}</td>
+                                        <td>{{$barangay->estpop}}</td>
                                         <td>
-                                            <div>
-                                                <a href="{{url("/ctracing/".$citymun->id)}}" class="btn btn-info">edit</a>
-                                                <a href="{{url("/ctracing/".$citymun->id)}}" class="btn btn-danger" value="delete">delete</a>
-                                            </div>
+                                            <a href="{{url("/barangay/".$barangay->id)}}" class="btn btn-info">edit</a>
+                                            <a href="{{url("/barangay/".$barangay->id)}}" class="btn btn-danger">delete</a>
                                         </td>
                                     </tr>
                                 <?php endforeach ?>
@@ -42,5 +49,4 @@
         </div>
     </div>
 </div>
-
 @endsection

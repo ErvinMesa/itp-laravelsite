@@ -22,7 +22,6 @@
     <link href="{{asset("src/assets/libs/c3/c3.min.css")}}" rel="stylesheet">
     <link href="{{asset('css/app.css') }}" rel="stylesheet">
     <link href=<?= asset("src/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css")?> rel="stylesheet">
-    <link href=<?= asset("src/assets/libs/leaflet/leaflet.css")?> rel="stylesheet">
     
     <link href="{{asset("dist/css/style.min.css")}}" rel="stylesheet">
 </head>
@@ -145,9 +144,13 @@
                                         class="hide-menu">City/Municipality</span></a></li>
                             </li>
                             <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="/barangay" aria-expanded="false"><span
+                                href="/barangay/index" aria-expanded="false"><span
                                     class="hide-menu">Barangay</span></a></li>
-                        </li>
+                            </li>
+                            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                href="/map" aria-expanded="false"><span
+                                    class="hide-menu">Map</span></a></li>
+                            </li>
                         </ul>
                     </nav>
                     
@@ -192,7 +195,6 @@
     <script src="{{asset("dist/js/sidebarmenu.js")}}"></script>
     <!--Custom JavaScript -->
     <script src="{{asset("dist/js/custom.min.js")}}"></script>
-    <script src="{{asset("dist/js/customized.js")}}"></script>
     <!--This page JavaScript -->
     <!-- chartist chart -->
     <script src="{{asset("src/assets/libs/chartist/dist/chartist.min.js")}}"></script>
@@ -206,7 +208,6 @@
 
     <script src=<?=asset("src/assets/libs/sweetalert2/dist/sweetalert2.all.min.js")?>></script>
     <script src=<?=asset("src/assets/extra-libs/sweetalert2/sweet-alert.init.js")?>></script>
-    <script src=<?=asset("src/assets/libs/leaflet/leaflet.js")?>></script>
     <!-- Chart JS -->
     <script src="{{asset("dist/js/pages/dashboards/dashboard1.js")}}"></script>
 </body>

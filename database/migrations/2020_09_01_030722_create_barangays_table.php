@@ -18,7 +18,8 @@ class CreateBarangaysTable extends Migration
             $table->text("bname");
             $table->decimal("latitude",11,6);
             $table->decimal("longitude",11,6);
-            $table->text("idcm");
+            $table->unsignedBigInteger("idcm");
+            $table->unsignedBigInteger("estpop");
             $table->text("remarks")->nullable();
             $table->timestamps();
         });

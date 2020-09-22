@@ -52,10 +52,20 @@
                                 <h4 class="card-title">City/Municipality</h4>
                                 <div class="form-group mb-4">
                                     <select class="form-control" id="exampleFormControlSelect1" name="idcm">
-                                        <option selected>1</option>
-                                        <option>2</option>
+                                        @foreach ($citymuns as $citymun)
+                                            <option value="{{$citymun->id}}">{{$citymun->cmdesc}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
+                            </div>
+                            <div class="col-2">
+                                <h5 class="card-title">Estimated Population</h5>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="estpop" required>
+                                    </div>
+                                    @error('estpop')
+                                            <strong>{{ $message }}</strong>
+                                    @enderror
                             </div>
                         </div>
                         <div class="row pt-4">
@@ -71,7 +81,7 @@
                         </div>
                         <div class="row pt-4">
                             <div class="offset-10 col-2">
-                                <input class="btn btn-success btn-lg" type="submit" value="Save">
+                                <input class="btn btn-success btn-lg" id="Form" type="submit" value="Save">
                                 <input class="btn btn-info btn-lg" type="button" value="Listing">
                             </div>
                         </div>

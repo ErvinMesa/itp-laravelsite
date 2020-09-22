@@ -8,4 +8,9 @@ class Barangay extends Model
 {
     protected $guarded = [];
     protected $table = 'barangay';
+    
+    public function citymun()
+    {
+        return $this->belongsTo(CityMun::class,'idcm');
+    }
 }

@@ -8,4 +8,9 @@ class CityMun extends Model
 {
     protected $guarded = [];
     protected $table = 'citymun';
+    
+    public function barangay()
+    {
+        return $this->hasMany(Profile::class);
+    }
 }
