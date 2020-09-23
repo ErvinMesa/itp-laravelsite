@@ -20,7 +20,6 @@ class CreateCityMunsTable extends Migration
             $table->decimal("longitude",5,2);
             $table->text("cmclass");
             $table->text("remarks")->nullable();
-            $table->timestamps();
         });
     }
 

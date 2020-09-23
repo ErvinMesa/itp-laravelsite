@@ -16,12 +16,12 @@ class CreateBarangaysTable extends Migration
         Schema::create('barangay', function (Blueprint $table) {
             $table->id();
             $table->text("bname");
+            $table->text("blevel");
             $table->decimal("latitude",11,6);
             $table->decimal("longitude",11,6);
             $table->unsignedBigInteger("idcm");
             $table->unsignedBigInteger("estpop");
             $table->text("remarks")->nullable();
-            $table->timestamps();
         });
     }
 

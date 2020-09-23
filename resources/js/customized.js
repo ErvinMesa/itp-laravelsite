@@ -63,31 +63,35 @@ $(function () {
          //parse json data
          let data = JSON.parse(this.responseText);
          
-         citymuns = new L.layerGroup();
-         barangays = new L.layerGroup();
-         data['citymuns'].forEach(marker => {
-            let latlong = L.latLng(parseInt(marker['longitude']),parseInt(marker['latitude']));
-            citymuns.addLayer(L.marker(latlong,{icon:icon}).bindPopup(marker['cmdesc']));
-         });
-         data['barangays'].forEach(marker => {
-            let latlong = L.latLng(parseInt(marker['longitude']),parseInt(marker['latitude']));
-            barangays.addLayer(L.marker(latlong,{icon:icon}).bindPopup(marker['bname']));
+         cities = new L.layerGroup();
+         municipalities = new L.layerGroup();
+         data.forEach(marker => {
+            let latlong = L.latLng(parseFloat(marker.latitude),parseFloat(marker.longitude));
+            switch(marker.cmclass){
+               case "City":
+                  cities.addLayer(L.marker(latlong,{icon:icon}).bindPopup(marker.cmdesc));
+                  break;
+               case "Municipality":
+                  municipalities.addLayer(L.marker(latlong,{icon:icon}).bindPopup(marker.cmdesc));
+                  break;
+            }
          });
          mymap.eachLayer(function(layer){
             if(layer._url === undefined){
                mymap.removeLayer(layer);
             }
          })
+         console.log(cities);
          switch(document.getElementById("MapDisplay").value){
             case "all":   
-               citymuns.addTo(mymap);
-               barangays.addTo(mymap);     
+               cities.addTo(mymap);
+               municipalities.addTo(mymap);     
                break;
-            case "citymuns":
-               citymuns.addTo(mymap);
+            case "cities":
+               cities.addTo(mymap);
                break;
-            case "barangays":
-               barangays.addTo(mymap);
+            case "municipalities":
+               municipalities.addTo(mymap);
                break;
          }
       }

@@ -39,7 +39,6 @@ Route::get('/profile/{user}/edit','PersonalDetailsController@edit')->name('profi
 
 Route::get('/map','MapController@index');
 Route::get('/map/data', function () {
-    $citymuns = \App\CityMun::select('cmdesc','latitude','longitude')->get();
-    $barangays = \App\Barangay::select('bname','latitude','longitude')->get();
-    return response()->json(['citymuns'=>$citymuns,'barangays'=>$barangays]);
+    $citymuns = \App\CityMun::select('cmdesc','cmclass','latitude','longitude')->get();
+    return response()->json($citymuns);
 });

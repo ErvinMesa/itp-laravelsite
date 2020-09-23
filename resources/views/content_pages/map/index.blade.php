@@ -17,12 +17,12 @@
             </div>
         </div>
         <div class="row">
-            <div class="offset-8 col-2 mt-4">
+            <div class="offset-2 col-2 mt-4">
                 <div class="form-group mb-4">
                     <select class="form-control" name="Display" id="MapDisplay">
                         <option value="all">All</option>
-                        <option value="citymuns">City/Municipalities</option>
-                        <option value="barangays">Barangays</option>
+                        <option value="cities">Cities</option>
+                        <option value="municipalities">Municipalities</option>
                     </select>
                 </div>
             </div>
