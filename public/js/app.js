@@ -63947,8 +63947,14 @@ __webpack_require__.r(__webpack_exports__);
 var _require = __webpack_require__(/*! leaflet */ "./node_modules/leaflet/dist/leaflet-src.js"),
     LatLng = _require.LatLng;
 
+var _require2 = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js"),
+    slice = _require2.slice;
+
 $(function () {
-  $("#ctracing").DataTable();
+  $("#ctracing").DataTable({
+    ajax: '/ctracing/index/data',
+    deferLoading: true
+  });
   $("#Form").on("click", function (e) {
     e.preventDefault();
     var form = $(this).parents('form');
@@ -64047,6 +64053,35 @@ $(function () {
     };
 
     xhr.send();
+  }
+
+  if ($("#citymunedit").length) {
+    var queryString = window.location.href; // grab citymun id from url
+
+    var id = queryString.slice(36); // set url to the custom api that returns a json
+
+    var url = "/ctracing/edit/" + id + "/data"; // use fetch to make an ajax request
+
+    fetch(url).then(function (res) {
+      return res.json();
+    }).then(function (data) {
+      document.getElementsByName("cmdesc")[0].value = data.cmdesc;
+      document.getElementsByName("latitude")[0].value = data.latitude;
+      document.getElementsByName("longitude")[0].value = data.longitude;
+      document.getElementsByName("cmclass")[0].getElementsByTagName('option')[data.cmclass].selected;
+      document.getElementsByName("remarks")[0].value = data.remarks;
+    }); // --- ALTERNATIVE USING PURE AJAX ---
+    // let xhr = new XMLHttpRequest();
+    // xhr.open("GET",url,true);
+    // xhr.onload = function(){
+    //    let data = JSON.parse(this.responseText);
+    //    document.getElementsByName("cmdesc")[0].value = data.cmdesc;
+    //    document.getElementsByName("latitude")[0].value = data.latitude;
+    //    document.getElementsByName("longitude")[0].value = data.longitude;
+    //    document.getElementsByName("cmclass")[0].getElementsByTagName('option')[data.cmclass].selected;
+    //    document.getElementsByName("remarks")[0].value = data.remarks;
+    // };
+    // xhr.send()
   }
 });
 

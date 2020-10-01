@@ -16,7 +16,7 @@
                     <h4 class="card-title">Barangay</h4>
                     <a href="/barangay" class="btn btn-primary mb-2">Add</a>
                     <div class="table-responsive">
-                        <table id="ctracing" class="table table-striped table-bordered">
+                        <table id="barangaytable" class="table table-striped table-bordered">
                             <thead>
                                 <tr>
                                     <th>Name</th>

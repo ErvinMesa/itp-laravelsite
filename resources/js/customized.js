@@ -1,7 +1,11 @@
 const { LatLng } = require("leaflet");
+const { slice } = require("lodash");
 
 $(function () {
-   $("#ctracing").DataTable()
+   $("#ctracing").DataTable({
+      ajax:'/ctracing/index/data',
+      deferLoading: true,
+   })
 
    $("#Form").on("click",function(e){ 
       e.preventDefault();
@@ -97,5 +101,35 @@ $(function () {
       }
       xhr.send();
    }
+
+   if($("#citymunedit").length){
+      const queryString = window.location.href;
+      // grab citymun id from url
+      let id = queryString.slice(36);
+      // set url to the custom api that returns a json
+      let url = "/ctracing/edit/"+id+"/data";
+      // use fetch to make an ajax request
+      fetch(url).then((res)=>res.json()).then((data)=>{
+         document.getElementsByName("cmdesc")[0].value = data.cmdesc;
+         document.getElementsByName("latitude")[0].value = data.latitude;
+         document.getElementsByName("longitude")[0].value = data.longitude;
+         document.getElementsByName("cmclass")[0].getElementsByTagName('option')[data.cmclass].selected;
+         document.getElementsByName("remarks")[0].value = data.remarks;
+      });
+
+      // --- ALTERNATIVE USING PURE AJAX ---
+      // let xhr = new XMLHttpRequest();
+      // xhr.open("GET",url,true);
+      // xhr.onload = function(){
+      //    let data = JSON.parse(this.responseText);
+      //    document.getElementsByName("cmdesc")[0].value = data.cmdesc;
+      //    document.getElementsByName("latitude")[0].value = data.latitude;
+      //    document.getElementsByName("longitude")[0].value = data.longitude;
+      //    document.getElementsByName("cmclass")[0].getElementsByTagName('option')[data.cmclass].selected;
+      //    document.getElementsByName("remarks")[0].value = data.remarks;
+      // };
+      // xhr.send()
+   }
+
 });
 

@@ -1,5 +1,6 @@
 <?php
 
+use App\CityMun;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MapController;
@@ -27,6 +28,11 @@ Route::get('/ctracing', 'ContactTracingController@create');
 Route::get('/ctracing/index', 'ContactTracingController@index');
 Route::post('/ctracing', 'ContactTracingController@store');
 Route::get('/ctracing/{citymun}', 'ContactTracingController@delete');
+Route::get('/ctracing/edit/{citymun}', 'ContactTracingController@edit');
+Route::patch('/ctracing/edit/{citymun}', 'ContactTracingController@update');
+Route::get('/ctracing/index/data', 'ContactTracingController@tabledata');
+Route::get('/ctracing/edit/{citymun}/data', 'ContactTracingController@citymundata');
+
 
 Route::get('/barangay', 'BarangayController@create');
 Route::get('/barangay/index', 'BarangayController@index');

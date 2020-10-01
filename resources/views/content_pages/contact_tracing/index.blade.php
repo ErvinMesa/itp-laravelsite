@@ -19,22 +19,6 @@
                                     <th>Actions</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <?php foreach($citymuns as $citymun): ?>
-                                    <tr>
-                                        <td>{{$citymun->cmdesc}}</td>
-                                        <td>{{$citymun->latitude}}</td>
-                                        <td>{{$citymun->longitude}}</td>
-                                        <td>{{$citymun->cmclass}}</td>
-                                        <td>
-                                            <div>
-                                                <a href="{{url("/ctracing/".$citymun->id)}}" class="btn btn-info">edit</a>
-                                                <a href="{{url("/ctracing/".$citymun->id)}}" class="btn btn-danger" value="delete">delete</a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                <?php endforeach ?>
-                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -42,5 +26,4 @@
         </div>
     </div>
 </div>
-
 @endsection
