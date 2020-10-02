@@ -107,7 +107,7 @@ $(function () {
       // grab citymun id from url
       let id = queryString.slice(36);
       // set url to the custom api that returns a json
-      let url = "/data";
+      let url = "/ctracing/edit/"+id+"/data";
       // use fetch to make an ajax request
       fetch(url).then((res)=>res.json()).then((data)=>{
          document.getElementsByName("cmdesc")[0].value = data.cmdesc;

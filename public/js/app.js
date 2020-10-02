@@ -64060,7 +64060,7 @@ $(function () {
 
     var id = queryString.slice(36); // set url to the custom api that returns a json
 
-    var url = "/data"; // use fetch to make an ajax request
+    var url = "/ctracing/edit/" + id + "/data"; // use fetch to make an ajax request
 
     fetch(url).then(function (res) {
       return res.json();
