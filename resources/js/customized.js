@@ -105,7 +105,7 @@ $(function () {
    if($("#citymunedit").length){
       const queryString = window.location.href;
       // grab citymun id from url
-      let id = queryString.slice(36);
+      let id = queryString.slice(49);
       // set url to the custom api that returns a json
       let url = "/ctracing/edit/"+id+"/data";
       // use fetch to make an ajax request
