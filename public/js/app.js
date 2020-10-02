@@ -64058,7 +64058,7 @@ $(function () {
   if ($("#citymunedit").length) {
     var queryString = window.location.href; // grab citymun id from url
 
-    var id = queryString.slice(49); // set url to the custom api that returns a json
+    var id = queryString.slice(50); // set url to the custom api that returns a json
 
     var url = "/ctracing/edit/" + id + "/data"; // use fetch to make an ajax request
 
