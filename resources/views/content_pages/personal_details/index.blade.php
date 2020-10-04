@@ -36,8 +36,14 @@
                                 {{$user->profile->quote}}
                             </p>
                         </div>
-                        <div class="offset-5 col-1">
+                        <div class="offset-4 col-1">
                             <canvas id="qr"></canvas>
+                        </div>
+                        <div class="col-1">
+                            <small class="text-muted">User ID</small>
+                            <p>
+                                {{$user->id}}
+                            </p>
                         </div>
                     </div>
                     <br/>
