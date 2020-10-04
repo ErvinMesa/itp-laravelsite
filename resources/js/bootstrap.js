@@ -11,6 +11,8 @@ try {
     window.$ = window.jQuery = require('jquery');
     require('bootstrap');
     require('leaflet');
+    window.QRCode = require('qrcode');
+    window.QrScanner = require('qr-scanner');
 } catch (e) {}
 
 /**

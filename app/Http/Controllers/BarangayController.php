@@ -38,6 +38,7 @@ class BarangayController extends Controller
         \App\Barangay::create($data);
         return redirect('/barangay/index');
     }
+    
     public function delete($barangay){
         Barangay::find($barangay)->delete();
         return redirect('/barangay/index');

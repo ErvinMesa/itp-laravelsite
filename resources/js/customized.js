@@ -1,11 +1,52 @@
 const { LatLng } = require("leaflet");
 const { slice } = require("lodash");
+const { default: QrScanner } = require("qr-scanner");
 
 $(function () {
    $("#ctracing").DataTable({
       ajax:'/ctracing/index/data',
       deferLoading: true,
    })
+   $("#userstable").DataTable({
+   })
+
+   if($("#qr").length){
+      let url = window.location.href;
+      let canvas = document.getElementById("qr");
+      fetch(url+'/data')
+      .then((res)=>res.json())
+      .then((data)=>{
+         QRCode.toCanvas(canvas,data['id'].toString(),(err)=>{if(err) console.error(err)})
+      });
+   }
+
+   if($('#userstable').length){
+      var el = document.querySelectorAll(".rolecheck");
+      xhr = new XMLHttpRequest();
+      for (var i = 0; i < el.length; i++) {
+         el[i].addEventListener("change", function (e) {
+            let id = e.target.id;
+            let value = e.target.value;
+            fetch("users/"+id,{
+               method:'PATCH',
+               headers: {
+                  "Content-Type": "application/json",
+                  "Accept": "application/json",
+                  "X-Requested-With": "XMLHttpRequest",
+                  "X-CSRF-Token": $('input[name="_token"]').val(),
+                  "Access-Control-Allow-Origin" : "*", 
+                  "Access-Control-Allow-Credentials" : true 
+                },
+               credentials:'same-origin',
+               body:JSON.stringify({
+                  user_role:value
+               })
+            })
+            .then((res)=>res.text())
+            .then(console.log)
+         });
+       }
+   }
 
    $("#Form").on("click",function(e){ 
       e.preventDefault();
@@ -105,7 +146,8 @@ $(function () {
    if($("#citymunedit").length){
       const queryString = window.location.href;
       // grab citymun id from url
-      let id = queryString.slice(50);
+      let regex = new RegExp('[a-zA-Z0-9\/:.]*\/ctracing\/edit\/');
+      let id = queryString.replace(regex,"");
       // set url to the custom api that returns a json
       let url = "/ctracing/edit/"+id+"/data";
       // use fetch to make an ajax request
@@ -131,5 +173,14 @@ $(function () {
       // xhr.send()
    }
 
+   if($('video').length){
+      const qrScanner = new QrScanner(document.getElementById('scanner'),result=> console.log('code:', result));
+      document.getElementById('startScan').addEventListener('click',(e)=>{
+         qrScanner.start();
+      })
+      document.getElementById('stopScan').addEventListener('click',(e)=>{
+         qrScanner.stop();
+      })
+   }
 });
 

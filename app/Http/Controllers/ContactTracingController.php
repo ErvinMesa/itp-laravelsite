@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Barangay;
+use App\CityMun;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
-use \App\CityMun;
+
 class ContactTracingController extends Controller
 {
     public function __construct()
@@ -25,11 +26,11 @@ class ContactTracingController extends Controller
         );
     }
 
-    public function edit(\App\CityMun $citymun){
+    public function edit(CityMun $citymun){
         return view('content_pages.contact_tracing.edit',compact('citymun'));
     }
 
-    public function update(\App\CityMun $citymun){
+    public function update(CityMun $citymun){
         $citymundata = request()->validate([
             'cmdesc' => 'required',
             'latitude' => 'required|numeric',
@@ -72,6 +73,7 @@ class ContactTracingController extends Controller
         });
         return response()->json(["data"=>$citymundata]);
     }
+
     public function citymundata($data){
         $citymundata = \App\CityMun::find($data);
         return response()->json($citymundata);

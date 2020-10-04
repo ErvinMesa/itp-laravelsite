@@ -139,17 +139,33 @@
                             </ul>
                             <li class="nav-small-cap"><i class="mdi mdi-dots-horizontal"></i>
                                 <span class="hide-menu">Apps</span></li>
-                            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                    href="/ctracing/index" aria-expanded="false"><span
-                                        class="hide-menu">City/Municipality</span></a></li>
-                            </li>
-                            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="/barangay/index" aria-expanded="false"><span
-                                    class="hide-menu">Barangay</span></a></li>
-                            </li>
+                            @switch(Auth::user()->role->role_name)
+                                    @case("admin")
+                                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                            href="/users" aria-expanded="false"><span
+                                                class="hide-menu">Users</span></a></li>
+                                        </li>
+                                    @case("provider")
+                                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                            href="/ctracing/index" aria-expanded="false"><span
+                                                class="hide-menu">City/Municipality</span></a></li>
+                                        </li>
+                                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                            href="/barangay/index" aria-expanded="false"><span
+                                                class="hide-menu">Barangay</span></a></li>
+                                        </li>
+                                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                            href="/scan/{{Auth::user()->id}}" aria-expanded="false"><span
+                                                class="hide-menu">Scanner</span></a></li>
+                                        </li>
+                            @endswitch
                             <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="/map" aria-expanded="false"><span
                                     class="hide-menu">Map</span></a></li>
+                            </li>
+                            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                href="/logs" aria-expanded="false"><span
+                                    class="hide-menu">Logs</span></a></li>
                             </li>
                         </ul>
                     </nav>
@@ -180,7 +196,7 @@
                 </main>
             </div>
         </div>
-    </div>
+    </div>    
     <script src="{{ asset('js/app.js') }}"></script>
     <!-- apps -->
     <script src="{{asset("dist/js/app.min.js")}}"></script>

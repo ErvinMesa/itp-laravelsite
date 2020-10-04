@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password'
     ];
 
     /**
@@ -25,7 +25,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password','user_role', 'remember_token'
     ];
 
     /**
@@ -40,5 +40,13 @@ class User extends Authenticatable
     public function profile()
     {
         return $this->hasOne(Profile::class);
+    }
+
+    public function role(){
+        return $this->belongsTo(UserRoles::class,'user_role');
+    }
+    
+    public function scanned_at(){
+        return $this->hasMany(Logs::class);
     }
 }

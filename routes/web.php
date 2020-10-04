@@ -41,7 +41,18 @@ Route::get('/barangay/{barangay}', 'BarangayController@delete');
 
 Route::get('/profile/{user}','PersonalDetailsController@index')->name('profile.show');
 Route::patch('/profile/{user}','PersonalDetailsController@update')->name('profile.update');
+Route::post('/profile/{user}','PersonalDetailsController@store')->name('profile.store');
 Route::get('/profile/{user}/edit','PersonalDetailsController@edit')->name('profile.edit');
+Route::get('/profile/{user}/store','PersonalDetailsController@create')->name('profile.create');
+Route::get('/profile/{user}/data','PersonalDetailsController@data')->name('profile.data');
+
+Route::get('/users','UserManagementController@index');
+Route::patch('/users/{user}','UserManagementController@update');
+
+Route::get('/logs','LogsController@index');
+
+Route::get('/scan/{user}','ScannerController@index')->name('scan.show');
+Route::post('/scan/{user}','ScannerController@store');
 
 Route::get('/map','MapController@index');
 Route::get('/map/data', function () {

@@ -4,7 +4,11 @@
 - php artisan serve
 
 
-Heroku Name
+### Heroku Name
 damp-sea-81376
 
-vtgdoNO1x2deEWJIYZ2QttF/zq+KYjb8Ky0lBMRiQKY=
+### To-Do
+- [ ] QR Code
+- [ ] Profile
+- [ ] Users
+- [ ] Scanner 
