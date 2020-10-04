@@ -7,8 +7,8 @@ $(function () {
       ajax:'/ctracing/index/data',
       deferLoading: true,
    })
-   $("#userstable").DataTable({
-   })
+   $("#userstable").DataTable()
+   $("#logstable").DataTable()
 
    if($("#qr").length){
       let url = window.location.href;

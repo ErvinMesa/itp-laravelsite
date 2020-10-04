@@ -1,12 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<style>
-    .table tbody+tbody{
-        border-top: none;
-    }
-
-</style>
 
 <div class="container-fluid">
     <div class="row">
