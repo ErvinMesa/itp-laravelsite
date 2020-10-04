@@ -70159,7 +70159,8 @@ $(function () {
     ajax: '/ctracing/index/data',
     deferLoading: true
   });
-  $("#userstable").DataTable({});
+  $("#userstable").DataTable();
+  $("#logstable").DataTable();
 
   if ($("#qr").length) {
     var url = window.location.href;
@@ -70197,7 +70198,13 @@ $(function () {
           })
         }).then(function (res) {
           return res.text();
-        }).then(console.log);
+        }).then(function (data) {
+          Swal.fire({
+            title: "Success!",
+            text: 'Role changed!',
+            type: "success"
+          });
+        });
       });
     }
   }

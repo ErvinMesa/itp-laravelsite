@@ -7,7 +7,9 @@ $(function () {
       ajax:'/ctracing/index/data',
       deferLoading: true,
    })
+
    $("#userstable").DataTable()
+
    $("#logstable").DataTable()
 
    if($("#qr").length){
@@ -43,9 +45,15 @@ $(function () {
                })
             })
             .then((res)=>res.text())
-            .then(console.log)
-         });
-       }
+            .then((data)=>{
+               Swal.fire({
+                  title:"Success!",
+                  text:'Role changed!',
+                  type:"success"
+               })
+            })
+          })
+      }
    }
 
    $("#Form").on("click",function(e){ 
